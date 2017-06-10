@@ -20,9 +20,9 @@ var ruleTester = new RuleTester();
 ruleTester.run('no-if-not', rule, {
   valid: [
     'if (!0) {}',
-    '+x ? 0 : 1',
+    'x ? 0 : 1',
     'x == null ? 0 : 1',
-    'if (+0) {} else {}',
+    'if (0) {} else {}',
     'if (x == null) {} else {}',
   ],
   invalid: [

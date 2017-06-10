@@ -1,6 +1,30 @@
 # eslint-plugin-no-if-not
 
-Require that the condition of an &#39;if&#39; with an &#39;else&#39; not be written in the negative
+An ESLint rule to require conditions not to be negations.
+
+## Rule Details
+
+This plugin adds a rule which forbids code like
+
+```js
+if (!0) { a; } else { b; }
+
+if (x !== 0) { a; } else { b; }
+
+!x ? a : b
+```
+
+and permits code like
+
+```js
+if (0) { b; } else { a; }
+
+if (x === 0) { b; } else { a; }
+
+x ? b : a
+
+if (!0) { a; } // The rule only applies when the statement has an 'else'.
+```
 
 ## Installation
 
@@ -30,22 +54,12 @@ Add `no-if-not` to the plugins section of your `.eslintrc` configuration file. Y
 }
 ```
 
-
-Then configure the rules you want to use under the rules section.
+Then add the single rule added by this plugin to the rules section:
 
 ```json
 {
     "rules": {
-        "no-if-not/rule-name": 2
+        "no-if-not/no-if-not": 2
     }
 }
 ```
-
-## Supported Rules
-
-* Fill in provided rules here
-
-
-
-
-
